@@ -2,13 +2,8 @@
 
     <x-slot name="header">
         <style>
-            .chartbox {
-                width: 75%;
-                height: 750px;
-            }
-            .center {
-                margin: auto
-            }
+            .chartbox {width: 75%;height: 750px;}
+            .center {margin: auto}
         </style>
 
     </x-slot>

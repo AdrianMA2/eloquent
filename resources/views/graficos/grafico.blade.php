@@ -2,10 +2,7 @@
 
     <x-slot name="header">
         <style>
-            .chartbox {
-                width: 100%;
-                height: 800px;
-            }
+            .chartbox {width: 100%;height: 800px;}
         </style>
 
     </x-slot>

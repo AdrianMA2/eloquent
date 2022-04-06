@@ -11,19 +11,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ asset('css/css.css') }}" />
         <title>Subir Archivo</title>
-        <style>
-            table{width: 100%; text-align: center;}
-        table, th, td {border: 1px solid;}
-            .container {
-                max-width: 500px;
-            }
-            dl, ol, ul {
-                margin: 0;
-                padding: 0;
-                list-style: none;
-            }
-        </style>
     </head>
     <body>
         <div class="container mt-5">
@@ -63,13 +52,19 @@
                                 <th>Nombre</th>
                                 <th>Creado</th>
                                 <th>Actualizado</th>
+                                <th>Action</th>
                             </tr>
                             @foreach ($files as $file)
                                 <tr>
-                                    <td><b><a href="{{ url($file->file_path) }}">{{ $file->name }}</a></b></td>
+                                    <td class="parcelanombre"><b><a href="{{ url($file->file_path) }}">{{ $file->name }}</a></b></td>
                                     <td>{{ $file->created_at }}</td>
                                     <td>{{ $file->updated_at }}</td>
-                                    
+                                    <!--<td><a href="{ {route('descargar', $file)}}">Descargar</a></td>-->
+                                    <td class="parcelaboton"><button class="btn">
+                                      <a class="blanco" href="{{route('descargar', $file)}}">
+                                        <i class="fa fa-download"></i> Download
+                                      </a>
+                                    </button></td>
                                 </tr>
                             @endforeach
                         </table>
@@ -79,4 +74,24 @@
         </div>
     </body>
     </html>
+    <script>let downloadButton = document.querySelector('.button');
+      if(downloadButton) {    
+        downloadButton.addEventListener('click', function(event) {
+          event.preventDefault();
+          
+          /* Start loading process. */
+          downloadButton.classList.add('loading');
+          
+          /* Set delay before switching from loading to success. */
+          window.setTimeout(function() {
+            downloadButton.classList.remove('loading');
+            downloadButton.classList.add('success');
+          }, 3000);
+          
+          /* Reset animation. */
+          window.setTimeout(function() {
+            downloadButton.classList.remove('success');
+          }, 8000);
+        });
+      };</script>
 </x-app-layout>

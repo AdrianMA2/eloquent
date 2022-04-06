@@ -40,3 +40,4 @@ Route::resource('graficos3', Grafico3Controller::class);
 Route::get('/downloadFile', [FileUpload::class, 'downloadFile']);
 Route::get('/upload-file', [FileUpload::class, 'createForm']);
 Route::post('/upload-file', [FileUpload::class, 'fileUpload'])->name('fileUpload');
+Route::get('/upload-file/descarga/{file}', [FileUpload::class, 'download'])->name('descargar');

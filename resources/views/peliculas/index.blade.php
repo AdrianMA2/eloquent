@@ -1,15 +1,7 @@
 <x-app-layout>
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/css.css') }}" rel="stylesheet">
     <style>
-        .button {text-align: center; transition-duration: 0.6s;   padding: 3px 6px;}
-        .button1 {border-radius: 4px; background-color: rgb(96, 178, 192); color: white;}
-        .button2 {border-radius: 4px; background-color: white; color: black; border: 1px solid #d86969;}
-        .button2:hover {background-color: #d86969;color: white;}
-        .buscador{width:30%; border-color: black;}
-        .boton_buscar{text-align: center; transition-duration: 0.6s;}
-        .boton_buscar1{ width: 40px; height: 40px; border-radius: 4px; padding: 4px;position: relative; top: 15px;}
-        .boton_buscar1:hover {border: 2px solid #4a7bee;}
-
+        
       </style>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">

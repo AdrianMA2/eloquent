@@ -40,4 +40,15 @@ class FileUpload extends Controller
             ->with('file', $fileName);
         }
    }
+
+  public function download(file $file){
+
+    $files=public_path().$file->file_path;
+
+      if(file_exists($files)){
+      return response()->download($files, $file->name);
+      } else{
+        echo('Ha habido un error');
+      }
+  }
 }
