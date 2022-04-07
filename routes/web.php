@@ -28,16 +28,16 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::post('obtenerfilm', 'App\Http\Controllers\FilmController@buscarfilm')
-         ->name('peliculas.buscarfilm');
-Route::resource('peliculas', FilmController::class);
 
-Route::resource('graficos', GraficoController::class);
-Route::resource('graficos2', Grafico2Controller::class);
-Route::resource('graficos3', Grafico3Controller::class);
+Route::middleware(['auth'])->group(function () {
+    Route::post('obtenerfilm', 'App\Http\Controllers\FilmController@buscarfilm')->name('peliculas.buscarfilm');
+    Route::resource('peliculas', FilmController::class);
 
+    Route::resource('graficos', GraficoController::class);
+    Route::resource('graficos2', Grafico2Controller::class);
+    Route::resource('graficos3', Grafico3Controller::class);
 
-Route::get('/downloadFile', [FileUpload::class, 'downloadFile']);
-Route::get('/upload-file', [FileUpload::class, 'createForm']);
-Route::post('/upload-file', [FileUpload::class, 'fileUpload'])->name('fileUpload');
-Route::get('/upload-file/descarga/{file}', [FileUpload::class, 'download'])->name('descargar');
+    Route::get('/upload-file', [FileUpload::class, 'createForm']);
+    Route::post('/upload-file', [FileUpload::class, 'fileUpload'])->name('fileUpload');
+    Route::get('/upload-file/descarga/{file}', [FileUpload::class, 'download'])->name('descargar');
+});

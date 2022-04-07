@@ -7,14 +7,19 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-red overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
+                    <form action=""></form>
                     <H1><b>Filtrar por fecha</b></H1>
-                    <input type="date" id="start" name="trip-start"
-                        value="2018-07-22" min="2018-01-01" max="2018-12-31">
+                    Desde:
+                    <input type="date" id="desde" name="trip-desde"
+                        value="2005-05-24" min="2005-05-24" max="2006-02-13">
+                    Hasta:
+                    <input type="date" id="hasta" name="hasta"
+                        value="2006-02-14" min="2005-05-25" max="2006-02-14">
                 </div>
                 <div class="p-6 bg-white border-b border-gray-200">
                     <H1><b>Ventas por meses</b></H1>
                     <canvas id="chart-1" width="100" height="100" ></canvas>
-                    <H2 style="text-align: center">Meses</H2>
+                    <H2 style="text-align: center">Fechas</H2>
                 </div>
             </div>
         </div>

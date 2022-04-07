@@ -31,7 +31,7 @@ class Grafico2Controller extends Controller
         group by Nombre
         order by Dólares desc
         LIMIT 5;";
-        $sql3 = "SELECT COUNT(payment.amount) as 'Dólares', city as 'Ciudad'
+        $sql3 = "SELECT SUM(payment.amount) as 'Dólares', city as 'Ciudad'
         FROM city
         inner join address on city.city_id = address.city_id
         inner join customer on address.address_id = customer.address_id
@@ -48,7 +48,7 @@ class Grafico2Controller extends Controller
         inner join country on city.country_id = country.country_id
         group by country.country
         order by Clientes desc
-       limit 20
+       limit 10
         ;";
 
         $rentals1 = DB::select($sql1);

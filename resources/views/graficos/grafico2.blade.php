@@ -44,7 +44,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-red overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200 chartbox center">
-                    <H1><b>Top 20 paises con mas clientes</b></H1>
+                    <H1><b>Top 10 paises con mas clientes</b></H1>
                     <canvas id="chart-4"></canvas>
                     <H2 style="text-align: center">Paises</H2>
                 </div>
@@ -55,6 +55,7 @@
 </x-app-layout>https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+<script src="https://unpkg.com/chart.js-plugin-labels-dv/dist/chartjs-plugin-labels.min.js"></script>
 <script>
     const cData1 = JSON.parse(`<?php echo $data; ?>`)
     console.log(cData1);
@@ -166,12 +167,17 @@
         },
         options: {
             maintainAspectRatio: false,
-            scales: {
-                y: {
-                    beginAtZero: false
+            plugins: {
+                labels: {
+                    render: (args) => {
+                        if(args.percentage > 0){
+                        return `${args.label}:
+${args.value} clientes`
+                        }
+                    }
                 }
             }
-        }
+        },
     });
     const cData4 = JSON.parse(`<?php echo $data; ?>`)
     console.log(cData4);
@@ -206,6 +212,16 @@
         options: {
             maintainAspectRatio: false,
             
-        }
+            plugins: {
+                labels: {
+                    render: (args) => {
+                        if(args.percentage > 0){
+                        return `${args.label}:
+${args.value} clientes`
+                        }
+                    }
+                }
+            }
+        },
     });
 </script>

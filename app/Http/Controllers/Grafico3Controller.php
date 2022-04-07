@@ -17,16 +17,16 @@ class Grafico3Controller extends Controller
      */
     public function index()
     {
-        $sql1 = "SELECT month(rental_date) as mes, count(*) as alquilado
+        $sql1 = "SELECT date(rental_date) as fecha, count(*) as alquilado
         FROM sakila.rental 
-        group by mes;";
+        group by fecha;";
 
         $rentals1 = DB::select($sql1);
 
         $data = [];
 
         foreach($rentals1 as $rental1) {
-            $data['label1'][] = $rental1->mes;
+            $data['label1'][] = $rental1->fecha;
             $data['data1'][] = $rental1->alquilado;
         }
         
